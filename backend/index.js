@@ -7,7 +7,7 @@ import {
     DB_PASSWORD, 
     DB_PORT, 
     DB_USER, 
-    FRONTEND_URL, 
+    FRONTEND_URL,
     PORT,
     }
     from "./config.js";
@@ -22,13 +22,13 @@ const pool = new pg.Pool({
 })
 
 // Apply the CORS middleware correctly
-app.use(cors({
-    origin: 'http://localhost:5173'
+app.use(
+    cors({
+    origin:  FRONTEND_URL,
 }));
 
 app.get("/ping", async (req, res) =>{
-
-    const result = await pool.query('SELECT NOW()')
+    const result = await pool.query("SELECT NOW()")
 
     res.send({
         upong: result.rows[0].now,
@@ -36,5 +36,5 @@ app.get("/ping", async (req, res) =>{
 });
 
 app.listen(PORT, () => {
-    console.log('Server is running on port 3000');
+    console.log("Server is running on port 3000");
 });

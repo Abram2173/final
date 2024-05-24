@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 
-
 const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 function App() {
